@@ -11,16 +11,35 @@ let money = +prompt("Ваш бюджет на месяц"),
 
     };
 
-let a1 = prompt("Введите обязательную статью расходов в этом месяц"),
-    a2 = prompt("Во сколько обойдется?"),
-    a3 = prompt("Введите обязательную статью расходов в этом месяц"),
-    a4 = prompt("Во сколько обойдется?");
-    
+for (i = 0; i < 2; i++) {
+    a = prompt("Введите обязательную статью расходов в этом месяц", ''),
+    b = prompt("Во сколько обойдется?", '');
 
-appData.expenses.a1 = a2;
-appData.expenses.a3 = a4;
+    if ((typeof(a))=== 'string' && typeof(a) != null && typeof(b) != null  // в данном условии a получаем строку, а не равно 0, b тоже не равно 0
+    && a != "" && b != '' && a.length < 50) {  // а не равно пустой строке , b не равно пустой строке , length означает символов меньше 50
+        console.log("very good");
+        appData.expenses [a] = b;
+    } else {
+        console.log("bad resultat");
+        i --;
+    }
 
-alert (appData.budjet / 30);
+};
+
+
+appData.mobeyPerDay = appData.budjet / 30;
+
+alert ("Ежедневный бюджет: " + appData.mobeyPerDay);
+
+if (appData.mobeyPerDay < 100 ) {
+    console.log("Минимальный уроверь достатка")
+}else if (appData.mobeyPerDay > 100 && appData.mobeyPerDay < 2000) {
+    console.log("Средний уровень достатка");
+}else if (appData.mobeyPerDay > 2000) {
+    console.log("Высокий уровень достатка");
+}else {
+    console.log("Произошла ошибка")
+}
 
 
 
